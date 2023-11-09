@@ -15,8 +15,20 @@ summary_models <- function(ll) {
                 .f = function(i) {
                     modelo <- data.table::data.table(dataset[[i]])
 
+                    
+
                     message(crayon::bgBlue(
                         glue::glue("Modelo {i}", i = unique(modelo$model))
+                    ))
+                    
+                    message(crayon::bgBlue(
+                        glue::glue("Dataset {x}", x = nrow(modelo))
+                    ))
+
+                    modelo = modelo[grepl("train_function", modelo$config), ]
+
+                    message(crayon::red(
+                        glue::glue("Dataset {x}", x = nrow(modelo))
                     ))
 
                     modelo <- cbind(
@@ -24,7 +36,16 @@ summary_models <- function(ll) {
                         purrr::map_dfr(
                             .x = modelo$config,
                             .f = function(x) {
-                                jsonlite::fromJSON(x)
+                                
+                                tryCatch(
+                                    {
+                                        jsonlite::fromJSON(x)
+                                    },
+                                    error = function(e) {
+                                        data.frame(formula = "")
+                                    }
+                                )
+                                
                             }
                         )
                     )
@@ -37,15 +58,31 @@ summary_models <- function(ll) {
 
                     by_columns <- notin(names(modelo), c("index", "model_name", "err.tr", "err.te"))
 
-                    modelo[
+                    modelo <- modelo[
                         ,
                         .(
-                            total_models = .N,
-                            error_test = mean(err.te),
-                            error_train = mean(err.tr)
+                            total_models = max(index),
+                            error_test = mean(err.te, na.rm = TRUE),
+                            error_train = mean(err.tr, na.rm = TRUE)
                         ),
                         by = by_columns
                     ]
+
+                    modelo <- modelo[, (names(modelo)) := lapply(.SD, as.character), .SDcols = names(modelo)]
+                    tun <- modelo[
+                        which.min(error_test)
+                    ]
+
+
+                    cols_to_json <- notin(names(tun), c("dataset", "model", "total_models", "error_test", "error_train"))
+
+                    tun[
+                        ,
+                        parameters := toJSON(.SD),
+                        .SDcols = cols_to_json
+                    ]
+
+                    tun[, (cols_to_json) := NULL]
                 }
             )
         }

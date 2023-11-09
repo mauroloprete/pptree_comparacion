@@ -4,15 +4,15 @@
 
 This repository contains the code for the evaluation of the different classification models and extensions of PPTree.
 The following models are included:
-- PPTree (PDA or LDA)
-- PPTree Split Modification 1
-- PPTree Split Modification 2
-- PPTree Split Modification 3
-- CART (with implementation in rpart)
-- Random Forest (with implementation in randomForest)
-- SVM (with implementation in e1071)
-- PPForest (with implementation in PPforest)
-- hhcart (with implementation in hhcartr)
+- **PPTree** (PDA or LDA)
+- **PPTree Split Modification 1**
+- **PPTree Split Modification 2**
+- **PPTree Split Modification 3**
+- **CART** (with implementation in *rpart*)
+- **Random Forest** (with implementation in *randomForest*)
+- **SVM** (with implementation in *e1071*)
+- **PPForest** (with implementation in *PPforest*)
+- **hhcart** (with implementation in hhcartr)
 
 The configuration of each model can be found in the file 'metadata/metadata_config.json' where you can find the training and prediction function of each model.
 
@@ -35,7 +35,9 @@ For each model a file of the trained model, the training data and its test set w
 
 ## Gitpod development environment
 
-[Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mauroloprete/pptree_comparacion)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mauroloprete/pptree_comparacion)
+
+
 
 ## Local configuration
 
