@@ -105,6 +105,7 @@ create_samples <- function(dataset, n_size, n_rep) {
 
 save_sample <- function(sample, model, dataset) {
     output_dir <- here::here(
+        "output",
         dataset,
         model
     )
