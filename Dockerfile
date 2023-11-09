@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y libpng16-16 \
     libpq-dev \
     libtiff-dev \
     libcairo2-dev \
-    libxt-dev
+    libxt-dev \
+    git
 
 WORKDIR /home/pptree
 

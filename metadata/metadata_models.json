@@ -26,7 +26,7 @@
             "pptree_split_mod": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "TRUE",
@@ -38,7 +38,7 @@
             "pptree_split_mod2": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "FALSE",
@@ -50,7 +50,7 @@
             "pptree_split_mod3": {
                 "train_function": "PPTreeclass_MOD",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "TRUE",
@@ -78,7 +78,7 @@
                 "std": "FALSE",
                 "size.tr": 1,
                 "m": 50,
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "size.p": [
                     0.6,
                     0.9
@@ -147,7 +147,7 @@
             "pptree_split_mod": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "TRUE",
@@ -159,7 +159,7 @@
             "pptree_split_mod2": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "FALSE",
@@ -171,7 +171,7 @@
             "pptree_split_mod3": {
                 "train_function": "PPTreeclass_MOD",
                 "formula": "Type ~ .",
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "Rule": 1,
                 "r": 1,
                 "weight": "TRUE",
@@ -198,7 +198,7 @@
                 "std": "FALSE",
                 "size.tr": 1,
                 "m": 50,
-                "PPmethod": "'PDA'",
+                "PPmethod": "'LDA'",
                 "size.p": [
                     0.6,
                     0.9
@@ -745,7 +745,7 @@
             "pptree_split_mod": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "TRUE",
@@ -757,7 +757,7 @@
             "pptree_split_mod2": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "FALSE",
@@ -769,7 +769,7 @@
             "pptree_split_mod3": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "weight": "TRUE",
@@ -791,7 +791,7 @@
                 "std": "FALSE",
                 "size.tr": 1,
                 "m": 50,
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "size.p": [
                     0.1,
                     0.2,
@@ -917,6 +917,8 @@
                     0.4,
                     0.5,
                     0.6,
+                    0.7,
+                    0.8,
                     0.9
                 ]
             },
@@ -1027,13 +1029,15 @@
                 "std": "FALSE",
                 "size.tr": 1,
                 "m": 50,
-                "PPmethod": "PDA",
+                "PPmethod": "'PDA'",
                 "size.p": [
                     0.1,
                     0.2,
                     0.3,
                     0.4,
                     0.5,
+                    0.7,
+                    0.8,
                     0.6,
                     0.9
                 ]
@@ -1088,7 +1092,7 @@
             "pptree.lda": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "weight": "TRUE",
@@ -1099,7 +1103,7 @@
             "pptree_split_mod": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "TRUE",
@@ -1111,7 +1115,7 @@
             "pptree_split_mod2": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "entro": "FALSE",
@@ -1123,7 +1127,7 @@
             "pptree_split_mod3": {
                 "train_function": "PPTreeclass",
                 "formula": "Type ~ .",
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "Rule": 1,
                 "r": 1,
                 "weight": "TRUE",
@@ -1145,13 +1149,15 @@
                 "std": "FALSE",
                 "size.tr": 1,
                 "m": 50,
-                "PPmethod": "'LDA'",
+                "PPmethod": "'PDA'",
                 "size.p": [
                     0.1,
                     0.2,
                     0.3,
                     0.4,
                     0.5,
+                    0.7,
+                    0.8,
                     0.6,
                     0.9
                 ]

@@ -1,22 +1,22 @@
-# PPTree Comparación
+## PPTree Comparison
 
-## Introducción
+## Introduction
 
-En este repositorio se encuentran el código para la evaluación de los diferentes modelos de clasificación y las extensiones de PPTree.
-Se incluyen los siguientes modelos:
-- PPTree (PDA ó LDA)
-- PPTree Split Modificación  1
-- PPTree Split Modificación  2
-- PPTree Split Modificación  3
-- CART (con la implementación en rpart)
-- Random Forest (con la implementación en randomForest)
-- SVM (con la implementación en e1071)
-- PPForest (con la implementación en PPforest)
-- hhcart (con la implementación en hhcartr)
+This repository contains the code for the evaluation of the different classification models and extensions of PPTree.
+The following models are included:
+- PPTree (PDA or LDA)
+- PPTree Split Modification 1
+- PPTree Split Modification 2
+- PPTree Split Modification 3
+- CART (with implementation in rpart)
+- Random Forest (with implementation in randomForest)
+- SVM (with implementation in e1071)
+- PPForest (with implementation in PPforest)
+- hhcart (with implementation in hhcartr)
 
-La configuración de cada modelo se encuentra en el archivo 'metadata/metadata_config.json' donde puede encontrar la función de entrenamiento y predicción de cada modelo.
+The configuration of each model can be found in the file 'metadata/metadata_config.json' where you can find the training and prediction function of each model.
 
-Cada modelo fue evaluado en los siguientes datasets (incluidos en el paquete PPTree):
+Each model was evaluated on the following datasets (included in the PPTree package):
 
 - crab
 - fishcatch
@@ -29,45 +29,44 @@ Cada modelo fue evaluado en los siguientes datasets (incluidos en el paquete PPT
 - olive
 - parkinson
 
-Para cada dataset se entrenaron 200 modelos con diferentes configuraciones de train/test y en cada uno de ellos se evaluó la precisión de cada modelo, la configuración de los parámetros de cada modelo se encuentra en el archivo 'metadata/metadata_models.json'.
+For each dataset 200 models were trained with different train/test configurations and in each of them the accuracy of each model was evaluated, the configuration of the parameters of each model can be found in the file 'metadata/metadata_models.json'.
 
-Para cada modelo se generó un archivo del modelo entrenado, los datos de entrenamiento y su conjunto de test, estos archivos se encuentran en la carpeta 'results' y se encuentran en formato RData.
+For each model a file of the trained model, the training data and its test set was generated, these files are located in the 'results' folder and are in RData format.
 
-## Ambiente de desarrollo en Gitpod
+## Gitpod development environment
 
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mauroloprete/pptree_comparacion)
+[Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mauroloprete/pptree_comparacion)
 
-## Configuración local
+## Local configuration
 
-### Requisitos
+### Requirements
 
 - R (>= 3.6.0)
 - RStudio (>= 1.2.1335)
 
-### Instalación de dependencias
+### Installation of dependencies
 
 ```r
 source("R/config_packages.R")
 ```
 
-## Configuración en Docker
+## Configuration in Docker
 
 ```bash
-docker build -t pptree_comparacion .
-docker run -it pptree_comparacion
+docker build -t pptree_comparison .
+docker run -it pptree_comparison
 ```
 
-## Ejecución
+## Running
 
-### Generar modelos
+### Generate models
 
 ```r
 source("generate_models.R")
 ```
 
-### Análisis
+### Analysis
 
 ```r
 source("analysis.R")
 ```
-
