@@ -1,0 +1,72 @@
+{
+    "pptree.pda": {
+        "name": "Projection Persuit tree",
+        "library": "PPTreeViz",
+        "train_function": "PPTreeclass",
+        "predict_function": "PPclassify",
+        "error_function": "pptr.err"
+    },
+    "pptree.lda": {
+        "name": "Projection Persuit tree",
+        "library": "PPTreeViz",
+        "train_function": "PPTreeclass",
+        "predict_function": "PPclassify",
+        "error_function": "pptr.err"
+    },
+    "pptree_split_mod": {
+        "name": "Projection Persuit tree",
+        "library": "PPTreeViz",
+        "train_function": "PPTreeclass",
+        "predict_function": "PPclassify_MOD",
+        "error_function": "pptr_mod.err"
+    },
+    "pptree_split_mod2": {
+        "name": "Projection Persuit tree",
+        "library": "PPTreeViz",
+        "train_function": "PPTreeclass",
+        "predict_function": "PPclassify_MOD",
+        "error_function": "pptr_mod.err"
+    },
+    "pptree_split_mod3": {
+        "name": "Projection Persuit tree",
+        "library": "PPTreeViz",
+        "train_function": "PPTreeclass_MOD",
+        "predict_function": "PPclassify_MOD",
+        "error_function": "pptr_mod.err"
+    },
+    "cart": {
+        "name": "Classification and regression tree",
+        "library": "rpart",
+        "train_function": "rpart",
+        "predict_function": "predict",
+        "error_function": "cart.err"
+    },
+    "rf": {
+        "name": "Random Forest",
+        "library": "randomForest",
+        "train_function": "randomForest",
+        "predict_function": "predict",
+        "error_function": "rf.err"
+    },
+    "ppforest": {
+        "name": "Projection Persuit Forest tree",
+        "library": "PPforest",
+        "train_function": "PPforest",
+        "predict_function": "trees_pred",
+        "error_function": "pprf.err"
+    },
+    "hhcartr": {
+        "name": "hhcartr",
+        "library": "hhcartr",
+        "train_function": "hhcart",
+        "predict_function": "predict",
+        "error_function": "hhcart.err"
+    },
+    "svm": {
+        "name": "Support Vector Machine",
+        "library": "e1017",
+        "train_function": "svm",
+        "predict_function": "predict",
+        "error_function": "svm.err"
+    }
+}

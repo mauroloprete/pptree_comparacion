@@ -1,0 +1,7 @@
+image :
+  file: Dockerfile
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - ikuyadeu.r

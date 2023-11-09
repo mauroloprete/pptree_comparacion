@@ -1,0 +1,1193 @@
+{
+    "crab": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass_MOD",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.6,
+                    0.9
+                ],
+                "lambda": 0.1,
+                "parallel": "FALSE",
+                "cores": 2,
+                "rule": 1
+            },
+            "hhcartr": {
+                "train_function": "hhcart",
+                "arg_y_label": "Type",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            }
+        },
+        "r": 10,
+        "size.p": 2
+    },
+    "fishcatch": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass_MOD",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.6,
+                    0.9
+                ],
+                "lambda": 0.1,
+                "parallel": "FALSE",
+                "cores": 2,
+                "rule": 1
+            },
+            "hhcartr": {
+                "train_function": "hhcart",
+                "arg_y_label": "Type",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            }
+        },
+        "r": 10,
+        "size.p": 2
+    },
+    "glass": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass_MOD",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.6,
+                    0.9
+                ],
+                "lambda": 0.1,
+                "parallel": "FALSE",
+                "cores": 2,
+                "rule": 1
+            },
+            "hhcartr": {
+                "train_function": "hhcart",
+                "arg_y_label": "Type",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            }
+        },
+        "r": 10,
+        "size.p": 2
+    },
+    "leukemia": {
+        "modelos": {
+            "pptree.pda": {
+                "formula": "Type ~ .",
+                "train_function": "PPTreeclass",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass_MOD",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        },
+        "r": 10,
+        "size.p": 2
+    },
+    "lymphoma": {
+        "modelos": {
+            "pptree.pda": {
+                "formula": "Type ~ .",
+                "train_function": "PPTreeclass",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass_MOD",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        },
+        "r": 10,
+        "size.p": 2
+    },
+    "wine": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'LDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        }
+    },
+    "image": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'LDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        }
+    },
+    "NCI60": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": "2/3",
+                "m": 50,
+                "PPmethod": "'PDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        }
+    },
+    "olive": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "PDA",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        }
+    },
+    "parkinson": {
+        "modelos": {
+            "pptree.pda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'PDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree.lda": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "TRUE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod2": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "entro": "FALSE",
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "pptree_split_mod3": {
+                "train_function": "PPTreeclass",
+                "formula": "Type ~ .",
+                "PPmethod": "'LDA'",
+                "Rule": 1,
+                "r": 1,
+                "weight": "TRUE",
+                "lambda": 0.1,
+                "energy": 0,
+                "maxiter": 50000
+            },
+            "cart": {
+                "train_function": "rpart",
+                "formula": "Type ~ ."
+            },
+            "rf": {
+                "train_function": "randomForest",
+                "formula": "Type ~ ."
+            },
+            "ppforest": {
+                "train_function": "PPforest",
+                "class": "'Type'",
+                "std": "FALSE",
+                "size.tr": 1,
+                "m": 50,
+                "PPmethod": "'LDA'",
+                "size.p": [
+                    0.1,
+                    0.2,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.6,
+                    0.9
+                ]
+            },
+            "hhcart": {
+                "train_function": "hhcart",
+                "response": "classify",
+                "n_min": 2,
+                "min_node_impurity": 0.2,
+                "n_trees": 1,
+                "n_folds": 1,
+                "testSize": 0,
+                "useIdentity": "FALSE",
+                "pruning": "FALSE",
+                "control": [
+                    1,
+                    1,
+                    1,
+                    0.1,
+                    0.05,
+                    50
+                ],
+                "prune_control": [
+                    "all",
+                    14,
+                    20,
+                    3000
+                ],
+                "show_progress": "FALSE",
+                "seed": "NA"
+            },
+            "svm": {
+                "train_function": "svm",
+                "formula": "Type ~ .",
+                "type": "'C-classification'"
+            }
+        }
+    }
+}
