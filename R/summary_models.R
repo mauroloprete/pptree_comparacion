@@ -14,22 +14,9 @@ summary_models <- function(ll) {
                 .x = 1:length(dataset),
                 .f = function(i) {
                     modelo <- data.table::data.table(dataset[[i]])
-
-                    
-
-                    message(crayon::bgBlue(
-                        glue::glue("Modelo {i}", i = unique(modelo$model))
-                    ))
-                    
-                    message(crayon::bgBlue(
-                        glue::glue("Dataset {x}", x = nrow(modelo))
-                    ))
+                
 
                     modelo = modelo[grepl("train_function", modelo$config), ]
-
-                    message(crayon::red(
-                        glue::glue("Dataset {x}", x = nrow(modelo))
-                    ))
 
                     modelo <- cbind(
                         modelo,
