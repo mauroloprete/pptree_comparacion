@@ -35,6 +35,7 @@ datasets <- names(metadata_model)
 models <- names(metadata_config)
 models <- models[models != "hhcartr"]
 
+datasets <- datasets[datasets != "mnist"]
 
 result <- purrr::map(
     .x = datasets,
