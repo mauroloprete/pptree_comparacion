@@ -14,6 +14,9 @@ summary_models <- function(ll) {
                 .x = 1:length(dataset),
                 .f = function(i) {
                     modelo <- data.table::data.table(dataset[[i]])
+                    library(data.table)
+                    
+                    modelo[, index := 1:.N]
                 
 
                     modelo = modelo[grepl("train_function", modelo$config), ]
@@ -44,11 +47,11 @@ summary_models <- function(ll) {
                     }
 
                     by_columns <- notin(names(modelo), c("index", "model_name", "err.tr", "err.te"))
-
+                    
                     modelo <- modelo[
                         ,
                         .(
-                            total_models = max(index),
+                            total_models = length(unique(index)),
                             error_test = mean(err.te, na.rm = TRUE),
                             error_train = mean(err.tr, na.rm = TRUE)
                         ),
@@ -59,6 +62,8 @@ summary_models <- function(ll) {
                     tun <- modelo[
                         which.min(error_test)
                     ]
+                    
+                    print(tun$lambda)
 
 
                     cols_to_json <- notin(names(tun), c("dataset", "model", "total_models", "error_test", "error_train"))
