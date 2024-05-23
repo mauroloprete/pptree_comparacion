@@ -68,5 +68,12 @@
         "train_function": "svm",
         "predict_function": "predict",
         "error_function": "svm.err"
+    },
+    "ppforest_new": {
+        "name": "Projection Persuit Forest tree new",
+        "library": "PPTree",
+        "train_function": "PPForest",
+        "predict_function": "predict",
+        "error_function": "ppf_new.err"
     }
 }
