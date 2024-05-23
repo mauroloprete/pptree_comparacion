@@ -60,9 +60,6 @@ test <- load_image_file("t10k-images-idx3-ubyte")
 train$Type <- as.factor(load_label_file("train-labels-idx1-ubyte"))
 test$Type <- as.factor(load_label_file("t10k-labels-idx1-ubyte"))
 full_dataset <- rbind(train, test)
-saveRDS(full_dataset, here::here("input", "full_dataset.rds"))
+# saveRDS(full_dataset, here::here("input", "full_dataset.rds"))
 
-
-
-# view test image
 show_digit(train[100, ])

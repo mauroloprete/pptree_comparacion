@@ -6,7 +6,7 @@ library(e1071)
 library(rpart)
 library(PPtreeExt)
 library(here)
-
+library(PPTree)
 install_packages <- FALSE
 
 if (install_packages) {
@@ -35,7 +35,21 @@ datasets <- names(metadata_model)
 models <- names(metadata_config)
 models <- models[models != "hhcartr"]
 
-datasets <- datasets[datasets != "mnist"]
+
+full_dataset <- readRDS(here::here(
+    "input",
+    "full_dataset.rds"
+))
+
+clases_columnas <- sapply(full_dataset[, names(full_dataset) != "Type"], class)
+
+resultados_pca <- prcomp(full_dataset[, names(full_dataset) != "Type"])
+
+mnist <- data.frame(
+    resultados_pca$x[, 1:10]
+)
+
+mnist$Type <- as.factor(full_dataset$Type)
 
 result <- purrr::map(
     .x = datasets,
@@ -66,6 +80,6 @@ saveRDS(
     result,
     file = here::here(
         "output",
-        "result.rds"
+        "result_abril24.rds"
     )
 )
