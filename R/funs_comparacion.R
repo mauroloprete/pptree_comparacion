@@ -146,16 +146,16 @@ save_sample <- function(sample, model, dataset) {
 
 pptr.err <- function(model, tr, te) {
     ppt <- model
-    m.tr <- PPclassify(ppt, test.data = tr[, -1], true.class = tr[, 1], Rule = 1)
-    m.te <- PPclassify(ppt, test.data = te[, -1], true.class = te[, 1], Rule = 1)
+    m.tr <- PPclassify(ppt, test.data = tr[, names(tr) != "Type"], true.class = tr$Type, Rule = 1)
+    m.te <- PPclassify(ppt, test.data = te[, names(te) != "Type"], true.class = te$Type, Rule = 1)
     data.frame(err.tr = m.tr[[1]] / length(m.tr[[2]]), err.te = m.te[[1]] / length(m.te[[2]]))
 }
 
 
 pptr_mod.err <- function(model, tr, te) {
     ppt <- model
-    m.tr <- PPclassify_MOD(ppt, test.data = tr[, -1], true.class = tr[, 1], Rule = 1)
-    m.te <- PPclassify_MOD(ppt, test.data = te[, -1], true.class = te[, 1], Rule = 1)
+    m.tr <- PPclassify_MOD(ppt, test.data = tr[, names(tr) != "Type"], true.class = tr[, 1], Rule = 1)
+    m.te <- PPclassify_MOD(ppt, test.data = te[, names(te) != "Type"], true.class = te[, 1], Rule = 1)
     data.frame(err.tr = m.tr[[1]] / length(m.tr[[2]]), err.te = m.te[[1]] / length(m.te[[2]]))
 }
 
@@ -163,7 +163,7 @@ pptr_mod.err <- function(model, tr, te) {
 cart.err <- function(model, tr, te) {
     cart.m <- model
     m.tr <- predict(cart.m, newdata = tr, type = "class")
-    m.te <- predict(cart.m, newdata = te[, -1], type = "class")
+    m.te <- predict(cart.m, newdata = te[, names(te) != "Type"], type = "class")
     tab.tr <- table(tr[, 1], m.tr)
     tab.te <- table(te[, 1], m.te)
     data.frame(
@@ -172,9 +172,21 @@ cart.err <- function(model, tr, te) {
     )
 }
 
+ppf_new.err <- function(model, tr, te) {
+    ppf.m <- model
+    m.tr <- predict(ppf.m, newdata = tr)
+    m.te <- predict(ppf.m, newdata = te)
+    tab.tr <- table(tr$Type, m.tr)
+    tab.te <- table(te$Type, m.te)
+    data.frame(
+        err.tr = (dim(tr)[1] - sum(diag(tab.tr))) / dim(tr)[1],
+        err.te = (dim(te)[1] - sum(diag(tab.te))) / dim(te)[1]
+    )
+}
+
 rf.err <- function(model, tr, te) {
     rf <- model
-    m.te <- predict(rf, newdata = te[, -1], type = "class")
+    m.te <- predict(rf, newdata = te[, names(te) != "Type"], type = "class")
     tab.te <- table(te[, 1], m.te)
     data.frame(
         err.tr = (dim(tr)[1] - sum(diag(rf$confusion[, -dim(rf$confusion)[2]]))) / dim(tr)[1],
@@ -184,7 +196,7 @@ rf.err <- function(model, tr, te) {
 
 pprf.err <- function(model, tr, te) {
     ppf.m <- model
-    tab.te <- table(te[, 1], trees_pred(ppf.m, xnew = te[, -1])[[2]])
+    tab.te <- table(te$Type, trees_pred(ppf.m, xnew = te[, names(te) != "Type"])[[2]])
     data.frame(
         err.tr = ppf.m$training.error,
         err.te = (dim(te)[1] - sum(diag(tab.te))) / dim(te)[1]
@@ -194,12 +206,12 @@ pprf.err <- function(model, tr, te) {
 svm.err <- function(model, tr, te) {
     svm <- model
     m.tr <- predict(svm, newdata = tr)
-    m.te <- predict(svm, newdata = te[, -1], type = "class")
+    m.te <- predict(svm, newdata = te[, names(te) != "Type"], type = "class")
     tab.te <- table(
-        obs = te[, 1],
+        obs = te$Type,
         pred = m.te
     )
-    tab.te <- table(te[, 1], m.te)
+    tab.te <- table(te$Type, m.te)
     data.frame(
         err.tr = mean(tr$Type != m.tr),
         err.te = (dim(te)[1] - sum(diag(tab.te))) / dim(te)[1]
@@ -270,6 +282,11 @@ evaluate_models <- function(
         metadata_model[[dataset]][["modelos"]][[model]]
     )
 
+    message(crayon::bgBlue(
+        "Tuneando modelos {q_model}",
+        q_model = length(metadata_models)
+    ))
+
 
 
 
@@ -286,14 +303,14 @@ evaluate_models <- function(
                                 metadata_config = metadata_config,
                                 metadata_models = metadata_models[[i]]
                             )
-
+                            index = i + x - 1
                             model_dir <- here::here(
                                 "output",
                                 dataset,
                                 model,
                                 paste0(
                                     "model_",
-                                    x,
+                                    index,
                                     ".rds"
                                 )
                             )
@@ -316,11 +333,11 @@ evaluate_models <- function(
                             #     glue::glue('Clases diferentes {class_n}',class_n = length(unique(splits[[x]]$train[,1])))
                             # ))
 
-                            df$index <- x
+                            df$index <- index
                             df$model_name <- model_dir
                             df$dataset <- dataset
                             df$model <- model
-                            df$config <- toJSON(i)
+                            df$config <- toJSON(metadata_models)
 
                             return(df)
                         },
