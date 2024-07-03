@@ -15,21 +15,21 @@
     },
     "pptree_split_mod": {
         "name": "Projection Persuit tree",
-        "library": "PPTreeViz",
+        "library": "PPtreeExt",
         "train_function": "PPTreeclass",
         "predict_function": "PPclassify_MOD",
         "error_function": "pptr_mod.err"
     },
     "pptree_split_mod2": {
         "name": "Projection Persuit tree",
-        "library": "PPTreeViz",
+        "library": "PPtreeExt",
         "train_function": "PPTreeclass",
         "predict_function": "PPclassify_MOD",
         "error_function": "pptr_mod.err"
     },
     "pptree_split_mod3": {
         "name": "Projection Persuit tree",
-        "library": "PPTreeViz",
+        "library": "PPtreeExt",
         "train_function": "PPTreeclass_MOD",
         "predict_function": "PPclassify_MOD",
         "error_function": "pptr_mod.err"
