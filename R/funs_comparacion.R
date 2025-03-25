@@ -257,20 +257,25 @@ evaluate_models <- function(
         n_size = n_size,
         n_rep = n_rep
     )
+    
+    date_log = Sys.Date()
+    date_log = lubridate::year(date_log)*10000 + lubridate::month(date_log)*100 + lubridate::day(date_log)
+    
+    file_name = glue::glue("result_{date_log}.csv")
 
 
     # Guardar splits
 
-    purrr::walk(
-        .x = 1:n_rep,
-        .f = function(x) {
-            save_sample(
-                splits[[x]],
-                model = model,
-                dataset = dataset
-            )
-        }
-    )
+    #purrr::walk(
+    #    .x = 1:n_rep,
+    #    .f = function(x) {
+    #        save_sample(
+    #            splits[[x]],
+    #            model = model,
+    #            dataset = dataset
+    #        )
+    #    }
+    #)
 
     # Evaluar n_rep modelos
 
@@ -282,22 +287,31 @@ evaluate_models <- function(
         metadata_model[[dataset]][["modelos"]][[model]]
     )
 
-    message(crayon::bgBlue(
-        "Tuneando modelos {q_model}",
-        q_model = length(metadata_models)
-    ))
+    
 
 
+    
 
-
-    purrr::map_dfr(
+    purrr::walk(
         .x = 1:length(metadata_models),
         .f = function(i) {
-            purrr::map_dfr(
+          future::plan("future::multicore", workers = 35)
+          furrr::future_walk(
                 .x = 1:n_rep,
                 .f = function(x) {
                     tryCatch(
                         {
+                          library(rjson)
+                          library(PPforest)
+                          library(PPtreeViz)
+                          library(randomForest)
+                          library(e1071)
+                          library(rpart)
+                          library(PPtreeExt)
+                          library(here)
+                          library(PPTree)
+                          source(here::here("R", "funs_comparacion.R"))
+                          
                             model_train <- train_model(
                                 df_train = splits[[x]]$train,
                                 metadata_config = metadata_config,
@@ -315,10 +329,10 @@ evaluate_models <- function(
                                 )
                             )
 
-                            saveRDS(
-                                model_train,
-                                file = model_dir
-                            )
+                            #saveRDS(
+                            #    model_train,
+                            #    file = model_dir
+                            #)
 
 
 
@@ -338,6 +352,10 @@ evaluate_models <- function(
                             df$dataset <- dataset
                             df$model <- model
                             df$config <- toJSON(metadata_models)
+                            
+                            
+                            
+                            data.table::fwrite(df, file = file_name,append = TRUE)
 
                             return(df)
                         },
@@ -361,6 +379,92 @@ evaluate_models <- function(
 
 
     # return(model)
+}
+
+#v2 para q no se caiga
+
+evaluate_models <- function(
+    model,
+    dataset,
+    metadata_config,
+    metadata_model,
+    n_rep = 200,
+    n_size = 2 / 3,
+    workers = 35
+) {
+  library(future)
+  library(furrr)
+  library(data.table)
+  library(here)
+  library(rjson)
+  library(PPforest)
+  library(PPtreeViz)
+  library(randomForest)
+  library(e1071)
+  library(rpart)
+  library(PPtreeExt)
+  library(PPTree)
+  
+  future::plan(multicore, workers = workers)
+  
+  # Crear splits de datos
+  splits <- create_samples(
+    dataset = get(dataset),
+    n_size = n_size,
+    n_rep = n_rep
+  )
+  
+  # Crear nombre de archivo para guardar resultados
+  date_log <- format(Sys.Date(), "%Y%m%d")
+  file_name <- glue::glue("result_{date_log}.csv")
+  
+  # Obtener configuraciones del modelo
+  metadata_config <- metadata_config[[model]]
+  metadata_models <- generate_combinations(
+    metadata_model[[dataset]][["modelos"]][[model]]
+  )
+  
+  # Evaluar modelos en paralelo
+  furrr::future_walk(
+    .x = seq_along(metadata_models),
+    .f = function(i) {
+      furrr::future_walk(
+        .x = seq_len(n_rep),
+        .f = function(x) {
+          tryCatch({
+            model_train <- train_model(
+              df_train = splits[[x]]$train,
+              metadata_config = metadata_config,
+              metadata_models = metadata_models[[i]]
+            )
+            
+            index <- i + x - 1
+            model_dir <- here::here(
+              "output", dataset, model, paste0("model_", index, ".rds")
+            )
+            
+            df <- evaluate_model(
+              model = model_train,
+              train = splits[[x]]$train,
+              test = splits[[x]]$test,
+              error_function = metadata_config$error_function
+            )
+            
+            df$index <- index
+            df$model_name <- model_dir
+            df$dataset <- dataset
+            df$model <- model
+            df$config <- toJSON(metadata_models)
+            
+            data.table::fwrite(df, file = file_name, append = TRUE)
+          }, error = function(err) {
+            message(glue::glue("Error en repetición {x} modelo {model}: {err$message}"))
+          })
+        },
+        .options = furrr_options(scheduling = 2)
+      )
+    }
+  )
 }
 
 

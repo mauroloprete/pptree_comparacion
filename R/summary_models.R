@@ -80,3 +80,88 @@ summary_models <- function(ll) {
         }
     )
 }
+
+library(purrr)
+library(glue)
+library(crayon)
+library(jsonlite)
+library(data.table)
+
+summary_models_df <- function(df) {
+  purrr::map_dfr(
+    .x = unique(df$dataset),
+    .f = function(dataset_name) {
+      dataset <- df[df$dataset == dataset_name, ]
+      
+      message(crayon::bgBlue(
+        glue::glue("Dataset {dataset_name}")
+      ))
+      
+      map_dfr(
+        .x = unique(dataset$model),
+        .f = function(model_name) {
+          modelo <- data.table::data.table(dataset[dataset$model == model_name, ])
+          library(data.table)
+          
+          modelo[, index := 1:.N]
+          
+          modelo = modelo[grepl("train_function", modelo$config), ]
+          
+          modelo <- cbind(
+            modelo,
+            purrr::map_dfr(
+              .x = modelo$config,
+              .f = function(x) {
+                tryCatch(
+                  {
+                    jsonlite::fromJSON(x)
+                  },
+                  error = function(e) {
+                    jsonlite::parse_json("{}")
+                  }
+                )
+              }
+            )
+          )
+          
+          modelo[, config := NULL]
+          
+          notin <- function(x, y) {
+            x[!x %in% y]
+          }
+          
+          by_columns <- notin(names(modelo), c("index", "model_name", "err.tr", "err.te"))
+          
+          modelo <- modelo[
+            ,
+            .(
+              total_models = length(unique(index)),
+              error_test = mean(err.te, na.rm = TRUE),
+              error_train = mean(err.tr, na.rm = TRUE)
+            ),
+            by = by_columns
+          ]
+          
+          modelo <- modelo[, (names(modelo)) := lapply(.SD, as.character), .SDcols = names(modelo)]
+          tun <- modelo[
+            which.min(error_test)
+          ]
+          
+          print(tun$lambda)
+          
+          cols_to_json <- notin(names(tun), c("dataset", "model", "total_models", "error_test", "error_train"))
+          
+          tun[
+            ,
+            parameters := rjson::toJSON(.SD),
+            .SDcols = cols_to_json
+          ]
+          
+          tun[, (cols_to_json) := NULL]
+          
+          tun
+        }
+      )
+    }
+  )
+}
